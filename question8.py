@@ -1,11 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Question 8 of the homework
+This code completes question 8 of the 1st data assimilation assignment
 """
 import matplotlib.pyplot as plt
 import numpy as np
-
         
 location =  np.matrix([0,140,140+240])
 xb = np.matrix([18,15,20]).T
@@ -21,16 +18,17 @@ for i in list(range(2)):
     sigmab =np.square(np.matmul(H[i],eb))
     sigmao =R[i,i]
     W = np.matmul(B,H[i].T)*(1/(sigmab+sigmao))
-    xa = xb + np.matmul(W,(yo[i]- np.matmul(H[i],xb)))
-    #print(np.matmul(W,H[i].T))
-    #step2 = (I-np.matmul(W,H[i])) 
+    xa = xb + np.matmul(W,(yo[i]- np.matmul(H[i],xb))) 
     A = np.matmul(((I-np.matmul(W,H[i])) ),B)
     xb=xa
     B=A
-    
-    eb = np.sqrt(np.diagonal(B))
-    print(eb)
-  
+    eb = np.sqrt(np.diagonal(B)) 
+    # note: this step is added to update the background errors
+    # Since the diagonal contains the variaance of the erros
+    # the diagonal was extracted and sigma was taken to be the 
+    # square root of the entries in the diagonal. Sigma then
+    # equates to ei
+ 
 fig, ax = plt.subplots()
 forecast = ax.plot(np.squeeze(np.asarray(location)),np.squeeze(np.asarray(oldxb)),
                    color = 'k',
