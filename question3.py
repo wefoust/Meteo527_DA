@@ -18,7 +18,7 @@ B = np.array([[error[0]*error[0],error[0]*error[1]*cor[0],error[0]*error[2]*cor[
               [error[1]*error[0]*cor[0],error[1]*error[1],error[1]*error[2]*cor[2]],
               [error[2]*error[0]*cor[1],error[2]*error[1]*cor[2],error[2]*error[2]]])
 B = np.asmatrix(B)
-R = np.matrix([[1,.6],[.6,1]])
+R = np.matrix([[1,0],[0,1]])
 
 BHt = np.matmul(B,H.T)
 HBHt = np.matmul(H,(np.matmul(B,H.T)))
