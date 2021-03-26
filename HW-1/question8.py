@@ -19,7 +19,7 @@ for i in list(range(2)):
     sigmao =R[i,i]
     W = np.matmul(B,H[i].T)*(1/(sigmab+sigmao))
     xa = xb + np.matmul(W,(yo[i]- np.matmul(H[i],xb))) 
-    A = np.matmul(((I-np.matmul(W,H[i])) ),B)
+    A = np.matmul(((I-np.matmul(W,H[i]))),B)
     xb=xa
     B=A
     eb = np.sqrt(np.diagonal(B)) 
