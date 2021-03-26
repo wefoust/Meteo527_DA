@@ -132,8 +132,8 @@ sigmavalues = np.arange(.1,10,.1)
 stepIndex =np.arange(0,len(sigmavalues),1)
 timeMeanSigma = np.zeros(len(sigmavalues))
 for i in stepIndex:
-    timeMeanSigma[i] = np.mean(_3DVar(sigmavalues[i],sigmao,l,H,IC,yo,cycles,dt,F,Xtruth)[0][1])
-    #timeMeanSigma[i] = np.mean(_OIDA(cycles,sigmao,sigmavalues[i],l,H,yo,IC,dt,F,Xtruth)[0][1])
+    timeMeanSigma[i] = np.mean(_3DVar(sigmavalues[i],R,l,H,IC,yo,cycles,dt,F,Xtruth)[0][1])
+    #imeMeanSigma[i] = np.mean(_OIDA(cycles,sigmao,sigmavalues[i],l,H,yo,IC,dt,F,Xtruth)[0][1])
 
 fig,ax = plt.subplots()
 ax.plot(sigmavalues,timeMeanSigma)
@@ -179,7 +179,7 @@ for i in np.arange(0,len(lVals)):
    
 fig,ax1 = plt.subplots()
 ax1.plot(lVals,lPerterbedRMSE)
-ax1.set_xticks(np.arange(1,7,1))
+ax1.set_xticks(np.arange(1,len(lVals)+1,1))
 ax1.set_xlim(0)
 ax1.set_ylim(0)
 ax1.set_xlabel('l')
